@@ -134,7 +134,7 @@ const Link4 = ({redirect, currentHeight}) => {
   });
   return (
     <motion.div
-      style={{ position: "absolute", right: currentHeight < 1000 ? "25vw" : "30vw", bottom: currentHeight < 1000 ? "15vh" : "10vh" }}
+      style={{ position: "absolute", right: currentHeight < 1000 ? "25vw" : "30vw", bottom: currentHeight < 1000 ? "25vh" : "10vh" }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false }}
