@@ -96,7 +96,8 @@ h1,
     font-size: 70pt;
   }
   @media screen and (max-width: 700px) {
-    font-size: 40pt;
+    font-size: 35pt;
+    width: 100%;
   }
   @media screen and (max-height: 700px) {
     font-size: 40pt;
@@ -247,10 +248,10 @@ h1,
 }
 
 .panel {
-  float: right;
-  transform: translateX($offsetSide/2);
-  top: $offsetTop;
-  position: sticky;
+  position: fixed;
+  right: $offsetSide/2;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 12;
   height: 80vh;
   justify-content: space-between;
@@ -362,7 +363,8 @@ h1,
   right: 25px;
   z-index: 12;
   p {
-    font-size: 14pt;
+    font-size: 10pt;
+    color: $gray;
   }
 }
 

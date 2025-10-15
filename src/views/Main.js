@@ -171,7 +171,7 @@ export default function Main() {
         )}
       </div>
       <div className="footer">
-        <p className="body">ⓒ Cult 2025 . Права защищены</p>
+        <p >ⓒ Cult 2025 . Права защищены</p>
       </div>
     </>
   );
