@@ -14,6 +14,8 @@ export default function Main() {
   const [imgTransition, setImgTransition] = useState("phase1");
   const [navIsVisible, setNavIsVisible] = useState(false);
   const [tileHeight, setTileHeight] = useState(0);
+  const [currentWidth, setCurrentWidth] = useState(window.innerWidth);
+  const [currentHeight, setCurrentHeight] = useState(window.innerHeight);
   const initionalWidth = 390;
   const initionalScale = 120;
 
@@ -32,6 +34,8 @@ export default function Main() {
     setTimeout(() => setImgTransition("phase1"), 60000);
     const handleResize = () => {
       setTileHeight((window.innerWidth * initionalScale) / initionalWidth);
+      setCurrentWidth(window.innerWidth);
+      setCurrentHeight(window.innerHeight);
     };
     window.addEventListener("resize", handleResize);
     handleResize();
@@ -43,7 +47,7 @@ export default function Main() {
 
   return (
     <>
-      {navIsVisible && <NavigationBar />}
+      {navIsVisible && <NavigationBar currentHeight={currentHeight}/>}
       <motion.div
         className={`bg-image bg-image_${imgTransition}`}
         initial={{ opacity: 0 }}
@@ -88,8 +92,11 @@ export default function Main() {
           Тату.
         </motion.div>
       </div>
-      <div className={`shading shading_${shadingPhase}`}></div>
+      <div className={`shading`}></div>
       <div className={`tiles-container tiles-container_${blurType}`}>
+        {currentHeight < 700 && (
+          <div className="extra-tile"></div>
+        )}
         <motion.div
           style={{ height: `${tileHeight}%` }}
           initial={{ scaleY: 2 }}
@@ -159,6 +166,9 @@ export default function Main() {
         >
           <img src={tile6} alt="Something wrong" />
         </motion.div>
+        {currentHeight < 700 && (
+          <div className="extra-tile"></div>
+        )}
       </div>
       <div className="footer">
         <p className="body">ⓒ Cult 2025 . Права защищены</p>

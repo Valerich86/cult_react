@@ -12,7 +12,7 @@ const Anim2 = styled.div`
   animation: 3s ${keyframes`${pulse}`} infinite;
 `;
 
-const Link1 = ({redirect}) => {
+const Link1 = ({redirect, currentHeight}) => {
   const [bluring, setBluring] = useState(false);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const Link1 = ({redirect}) => {
   );
 };
 
-const Link2 = ({redirect}) => {
+const Link2 = ({redirect, currentHeight}) => {
   const [bluring, setBluring] = useState(false);
   useEffect(() => {
     const interval = setInterval(() => setBluring(!bluring), 2300);
@@ -70,7 +70,7 @@ const Link2 = ({redirect}) => {
   );
 };
 
-const Link5 = ({redirect}) => {
+const Link5 = ({redirect, currentHeight}) => {
   const [bluring, setBluring] = useState(false);
   useEffect(() => {
     const interval = setInterval(() => setBluring(!bluring), 2300);
@@ -98,7 +98,7 @@ const Link5 = ({redirect}) => {
   );
 };
 
-const Link3 = ({redirect}) => {
+const Link3 = ({redirect, currentHeight}) => {
   const [bluring, setBluring] = useState(false);
   useEffect(() => {
     const interval = setInterval(() => setBluring(!bluring), 2200);
@@ -126,7 +126,7 @@ const Link3 = ({redirect}) => {
   );
 };
 
-const Link4 = ({redirect}) => {
+const Link4 = ({redirect, currentHeight}) => {
   const [bluring, setBluring] = useState(false);
   useEffect(() => {
     const interval = setInterval(() => setBluring(!bluring), 2500);
@@ -134,7 +134,7 @@ const Link4 = ({redirect}) => {
   });
   return (
     <motion.div
-      style={{ position: "absolute", right: "30vw", bottom: "10vh" }}
+      style={{ position: "absolute", right: currentHeight < 1000 ? "25vw" : "30vw", bottom: currentHeight < 1000 ? "15vh" : "10vh" }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false }}
@@ -154,15 +154,15 @@ const Link4 = ({redirect}) => {
   );
 };
 
-export default function NavigationBar() {
+export default function NavigationBar({ currentHeight }) {
   const redirect = useNavigate();
   return (
     <div className="nav-bar">
-      <Link1 redirect={redirect}/>
-      <Link2 redirect={redirect}/>
-      <Link3 redirect={redirect}/>
-      <Link4 redirect={redirect}/>
-      <Link5 redirect={redirect}/>
+      <Link1 redirect={redirect} currentHeight={currentHeight}/>
+      <Link2 redirect={redirect} currentHeight={currentHeight}/>
+      <Link3 redirect={redirect} currentHeight={currentHeight}/>
+      <Link4 redirect={redirect} currentHeight={currentHeight}/>
+      <Link5 redirect={redirect} currentHeight={currentHeight}/>
     </div>
   );
 }
