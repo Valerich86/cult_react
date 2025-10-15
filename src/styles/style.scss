@@ -1,0 +1,455 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Bad+Script&family=Great+Vibes&display=swap");
+
+@mixin amatic-sc-regular {
+  font-family: "Amatic SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin amatic-sc-bold {
+  font-family: "Amatic SC", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@mixin great-vibes-regular {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin bad-script-regular {
+  font-family: "Bad Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+$blurColor: rgb(255, 146, 146);
+$dark: #1f1f1f;
+$offsetTop: 70px;
+$offsetSide: 10vw;
+
+$gray: #bdbfbf;
+$peachy1: #d9b29c;
+$peachy2: #8c5e4d;
+$brown: #402319;
+$black: #0d0d0d;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-wrap: initial;
+}
+
+body {
+  overflow: hidden;
+  background-color: $black;
+}
+
+p,
+.headline,
+.body,
+h1,
+.link {
+  caret-color: transparent;
+  user-select: none;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &_center {
+    align-items: center;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  &_between {
+    justify-content: space-between;
+  }
+  &_around {
+    justify-content: space-around;
+  }
+  &_evenly {
+    justify-content: space-evenly;
+  }
+  &_center {
+    justify-content: center;
+  }
+}
+
+.headline {
+  @include amatic-sc-regular();
+  // @include bad-script-regular;
+  z-index: 2;
+  font-size: 100pt;
+  width: 80%;
+  color: $gray;
+  @media screen and (max-width: 1200px) {
+    font-size: 70pt;
+  }
+  @media screen and (max-width: 700px) {
+    font-size: 40pt;
+  }
+}
+
+.body {
+  @include bad-script-regular();
+  font-size: 20pt;
+  color: $gray;
+}
+
+.main-info {
+  position: absolute;
+  width: 50%;
+  z-index: 10;
+  top: 62vh;
+  left: 50%;
+  transform: translateX(-50%);
+  div {
+    letter-spacing: 1rem;
+    @media screen and (max-width: 700px) {
+      letter-spacing: 0.2rem;
+      font-size: 14pt;
+    }
+    @media screen and (max-height: 700px) {
+      letter-spacing: 0.2rem;
+      font-size: 14pt;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    top: 53vh;
+    width: 90%;
+  }
+}
+
+.bg-image {
+  background: url("../assets/technical/back-peachy.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: brightness(1.5) contrast(1.1);
+  // border-top: 40px solid $dark;
+  // border-bottom: 40px solid $dark;
+  // border-left: 20px solid $dark;
+  // border-right: 20px solid $dark;
+  border: 20px solid $dark;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  // opacity: 0.7;
+  &_phase1 {
+    background-position: right;
+    transition: all 60s linear;
+  }
+  &_phase2 {
+    background-position: left;
+    transition: all 60s linear;
+  }
+}
+
+.tiles-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  &_burned {
+    background-color: inherit;
+    transition: all 5s;
+    opacity: 0.95;
+    filter: blur(2px);
+  }
+  &_flaming {
+    background-color: $gray;
+    transition: all 7s;
+    opacity: 1;
+    filter: blur(20px);
+  }
+  &_default {
+    background-color: black;
+    opacity: 0;
+    filter: blur(40);
+  }
+  div {
+    height: 465%;
+    img {
+      height: 100%;
+      // @media screen and (max-height: 700px) {
+      //   height: 300%;
+      // }
+    }
+  }
+  // @media screen and (max-height: 700px) {
+  //   justify-content: space-between;
+  // }
+}
+
+.nav-bar {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+}
+
+.link {
+  color: $peachy1;
+  @include amatic-sc-bold;
+  font-size: 50px;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.1s;
+  }
+  &:active {
+    opacity: 0.5;
+  }
+  &_blur {
+    filter: blur(0.5px);
+    transition: all 1s;
+  }
+  &_default {
+    filter: blur(0px);
+    transition: all 3s;
+  }
+  @media screen and (max-width: 1000px) {
+    font-size: 40px;
+  }
+  @media screen and (max-width: 700px) {
+    font-size: 30px;
+  }
+}
+
+.content {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(#1f1f1f, black);
+  padding: 0 $offsetSide 10vh $offsetSide;
+  overflow-x: hidden;
+}
+
+.panel {
+  float: right;
+  transform: translateX($offsetSide/2);
+  top: $offsetTop;
+  position: sticky;
+  z-index: 12;
+  height: 80vh;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    color: $peachy1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:nth-child(1) {
+      &:hover {
+        transform: rotateZ(540deg);
+        transition: all 0.7s ease-in-out;
+      }
+    }
+    &:nth-child(2) {
+      &:hover {
+        animation-name: hoverIconTop;
+        animation-duration: 1s;
+      }
+    }
+  }
+}
+
+@keyframes hoverIconTop {
+  0% {
+    transform: scaleY(1) translateY(0);
+  }
+  20% {
+    transform: scaleY(1.5) translateY(-3px);
+  }
+  50% {
+    transform: scaleY(1) translateY(0);
+  }
+  100% {
+    transform: scaleY(2) translateY(-4px);
+  }
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  border: 2px solid $peachy2;
+  z-index: 5;
+}
+
+.photo-tatoo {
+  width: 45%;
+  height: 65vh;
+  margin-bottom: 40vh;
+  &__photo {
+    width: 100%;
+    border-top-right-radius: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: $gray;
+    &:hover {
+      opacity: 0.9;
+    }
+    cursor: pointer;
+  }
+  &__text {
+    background-color: $brown;
+    width: 100%;
+    min-height: 50%;
+    border-bottom-left-radius: 40px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    p {
+      font-size: 1.3vw;
+      @media screen and (max-width: 1000px) {
+        font-size: 2vw;
+      }
+      @media screen and (max-width: 700px) {
+        font-size: 4vw;
+      }
+    }
+  }
+  @media screen and (max-width: 700px) {
+    width: 100%;
+    margin-bottom: 20vh;
+  }
+}
+
+.photo-master {
+  width: 55%;
+  height: 65vh;
+  background-size: cover;
+  background-color: $peachy2;
+  background-position: center;
+  margin-bottom: 40vh;
+  @media screen and (max-width: 700px) {
+    height: 50vh;
+    p {
+      font-size: 12pt;
+    }
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  right: 25px;
+  z-index: 12;
+  p {
+    font-size: 14pt;
+  }
+}
+
+.headline-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.decor {
+  background: url("../assets/technical/bgParticle.png");
+  background-repeat: space;
+  background-size: 20%;
+  position: absolute;
+  top: -5vh;
+  z-index: 1;
+  &_right {
+    right: $offsetSide/2;
+  }
+  &_left {
+    left: $offsetSide/2;
+  }
+  &_min {
+    width: 20vw;
+    height: 20vh;
+  }
+  &_max {
+    width: 40vw;
+    height: 40vh;
+  }
+  @media screen and (max-width: 700px) {
+    background-size: 50%;
+  }
+}
+
+.conveyer {
+  background-color: $dark;
+  overflow-x: auto;
+  scrollbar-width: none;
+  width: 100vw;
+  height: 100vh;
+  column-gap: 10vw;
+  .container {
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    padding: 5vh 5vw;
+    column-gap: 10vw;
+    div {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      width: 90vw;
+      height: 90vh;
+      border-radius: 40px;
+      background-color: $gray;
+    }
+  }
+}
+
+.skipIcons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+}
+
+.back {
+  z-index: 14;
+  position: absolute;
+  top: $offsetTop/2;
+  right: $offsetSide/4;
+  color: $peachy1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    transform: rotateZ(540deg);
+    transition: all 0.7s ease-in-out;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
+}
